@@ -1,17 +1,19 @@
 import { useState } from "react";
-import { getAllBooks } from "../utils/book";
 import { useEffect } from "react";
-import Books from "../components/Books";
 import Banner from "../components/Banner";
+import { getAllCourses } from "../utils/courses";
+import Courses from "../components/Courses";
 
 const HomePage = () => {
-  const [books, setBooks] = useState([]);
-  const getAllBookList = async () => {
-    const data = await getAllBooks();
-    setBooks(data);
+  const [courses, setCourses] = useState([]);
+
+  const getCourses = async () => {
+    const data = await getAllCourses();
+    setCourses(data);
   };
+
   useEffect(() => {
-    getAllBookList();
+    getCourses();
   }, []);
 
   return (
@@ -22,8 +24,8 @@ const HomePage = () => {
       </h1>
       <div className="px-14">
         <div className="my-12 gap-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {books.map((book) => (
-            <Books key={book.bookId} book={book}></Books>
+          {courses.map((course) => (
+            <Courses key={course._id} course={course}></Courses>
           ))}
         </div>
       </div>

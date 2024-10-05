@@ -2,9 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import { ROUTES } from "../routes/routes";
 import Common from "../layouts/Common";
 import HomePage from "../pages/HomePage";
-import SingleBookDetails from "../pages/SingleBookDetails";
 import FAQ from "../pages/FAQ";
 import Error from "../pages/Error";
+import SIngleCourse from "../pages/SIngleCourse";
 
 const router = createBrowserRouter([
   {
@@ -16,8 +16,10 @@ const router = createBrowserRouter([
         element: <HomePage></HomePage>,
       },
       {
-        path: `${ROUTES.SINGLE_BOOK.STATIC}`,
-        element: <SingleBookDetails></SingleBookDetails>,
+        path: `${ROUTES.SINGLE_COURSE.STATIC}`,
+        loader: ({ params }) =>
+          fetch(`${ROUTES.BASE_URL}/api/products/${params.id}`),
+        element: <SIngleCourse></SIngleCourse>,
       },
       {
         path: `${ROUTES.FAQ}`,

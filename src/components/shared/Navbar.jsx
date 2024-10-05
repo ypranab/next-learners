@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ROUTES } from "../routes/routes";
+import { ROUTES } from "../../routes/routes";
 
 const Navbar = () => {
   return (
@@ -41,7 +41,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to={`${ROUTES.HOME}`} className="btn btn-ghost text-xl">
-          eLibrary
+          Next Learners
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -61,8 +61,8 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Buy Book</a>
-        <a className="btn mx-2">Sign In</a>
+        <a className="btn">Sign In</a>
+        <a className="btn mx-2">Register</a>
       </div>
     </div>
   );

@@ -5,7 +5,8 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAntxciQUWGT8l2kpm-lbKxWGu98EDHUew",
+  // eslint-disable-next-line no-undef
+  apiKey: process.env.REACTapiKey,
   authDomain: "next-learners.firebaseapp.com",
   projectId: "next-learners",
   storageBucket: "next-learners.appspot.com",

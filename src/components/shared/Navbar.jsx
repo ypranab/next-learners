@@ -50,19 +50,12 @@ const Navbar = () => {
             <Link to={`${ROUTES.HOME}`}>Home</Link>
           </li>
           <li>
-            <a>About</a>
-          </li>
-          <li>
-            <a>BLog</a>
-          </li>
-          <li>
-            <Link to={`${ROUTES.FAQ}`}>FAQ</Link>
+            <Link to={`${ROUTES.FAQ}`}>Products</Link>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
         <a className="btn">Sign In</a>
-        <a className="btn mx-2">Register</a>
       </div>
     </div>
   );

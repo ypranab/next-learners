@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
-const SIngleCourse = () => {
+const SingleCourse = () => {
   const course = useLoaderData();
   const navigate = useNavigate();
 
@@ -10,17 +10,14 @@ const SIngleCourse = () => {
   const handleToastCart = () => {
     toast.success(`${title} is added to cart succesfully!!`);
   };
-  const handleToastWish = () => {
-    toast.success(`${title} is added to wishlist succesfully!!`);
-  };
 
-  if (Object.keys(course).length === 0) {
+  if (course === "") {
     navigate("/error");
   }
 
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl w-3/4 mx-auto m-10 py-16">
-      <figure className="max-w-md">
+      <figure className="max-w-screen-xl">
         <img src={`${img_url}`} alt="Album" />
       </figure>
       <div className="card-body">
@@ -29,9 +26,6 @@ const SIngleCourse = () => {
         <p>Review: {details}</p>
 
         <div className="card-actions justify-end">
-          <button onClick={handleToastWish} className="btn btn-primary">
-            Wish to Read
-          </button>
           <button onClick={handleToastCart} className="btn btn-primary">
             Add to Cart
           </button>
@@ -41,4 +35,4 @@ const SIngleCourse = () => {
   );
 };
 
-export default SIngleCourse;
+export default SingleCourse;

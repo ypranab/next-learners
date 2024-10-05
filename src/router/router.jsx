@@ -4,7 +4,7 @@ import Common from "../layouts/Common";
 import HomePage from "../pages/HomePage";
 import FAQ from "../pages/FAQ";
 import Error from "../pages/Error";
-import SIngleCourse from "../pages/SIngleCourse";
+import SingleCourse from "../pages/SIngleCourse";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         path: `${ROUTES.SINGLE_COURSE.STATIC}`,
         loader: ({ params }) =>
           fetch(`${ROUTES.BASE_URL}/api/products/${params.id}`),
-        element: <SIngleCourse></SIngleCourse>,
+        element: <SingleCourse></SingleCourse>,
       },
       {
         path: `${ROUTES.FAQ}`,

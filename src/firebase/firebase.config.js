@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -5,13 +6,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  // eslint-disable-next-line no-undef
   apiKey: process.env.REACTapiKey,
-  authDomain: "next-learners.firebaseapp.com",
-  projectId: "next-learners",
-  storageBucket: "next-learners.appspot.com",
-  messagingSenderId: "740108586865",
-  appId: "1:740108586865:web:1ebaaf752989e3169ff0d0",
+  authDomain: process.env.authDomain,
+  projectId: process.env.projectId,
+  storageBucket: process.env.storageBucket,
+  messagingSenderId: process.env.messagingSenderId,
+  appId: process.env.appId,
 };
 
 // Initialize Firebase

@@ -1,4 +1,5 @@
 export const ROUTES = {
+  BASE_URL: "https://next-learners-server.vercel.app/",
   HOME: "/",
   BOOKS: "/books",
   SINGLE_BOOK: {

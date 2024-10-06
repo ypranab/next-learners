@@ -1,25 +1,24 @@
-/* eslint-disable react/prop-types */
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getAllCourses } from "../utils/courses";
+import CourseCard from "./CourseCard";
 
-const Courses = ({ course }) => {
-  const { _id, title, author, img_url, details } = course;
+const Courses = () => {
+  const [courses, setCourses] = useState([]);
+  const getCourses = async () => {
+    const data = await getAllCourses();
+    setCourses(data);
+  };
+  useEffect(() => {
+    getCourses();
+  }, []);
+  console.log(courses);
 
   return (
-    <Link to={`/api/products/${_id}`}>
-      <div className="card bg-base-100 shadow-xl">
-        <figure className="w-fit h-36">
-          <img src={`${img_url}`} alt="" />
-        </figure>
-        <div className="card-body h-80">
-          <h2 className="card-title font-bold">{title}</h2>
-          <p>Author : {author}</p>
-          <p>{details.slice(0, 120) + "..."}</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Details</button>
-          </div>
-        </div>
-      </div>
-    </Link>
+    <div className="my-12 gap-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      {courses.map((course) => (
+        <CourseCard key={course._id} course={course}></CourseCard>
+      ))}
+    </div>
   );
 };
 

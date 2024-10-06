@@ -50,7 +50,7 @@ const Navbar = () => {
             <Link to={`${ROUTES.HOME}`}>Home</Link>
           </li>
           <li>
-            <Link to={`${ROUTES.FAQ}`}>Products</Link>
+            <Link to={`${ROUTES.COURSES}`}>Products</Link>
           </li>
         </ul>
       </div>

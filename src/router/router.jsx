@@ -5,6 +5,7 @@ import HomePage from "../pages/HomePage";
 import FAQ from "../pages/FAQ";
 import Error from "../pages/Error";
 import SingleCourse from "../pages/SIngleCourse";
+import Courses from "../components/Courses";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
       {
         path: `${ROUTES.HOME}`,
         element: <HomePage></HomePage>,
+      },
+      {
+        path: `${ROUTES.COURSES}`,
+        element: <Courses></Courses>,
       },
       {
         path: `${ROUTES.SINGLE_COURSE.STATIC}`,

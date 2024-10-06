@@ -1,22 +1,41 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import image from "../../../assests/login.svg";
 import { AuthContext } from "../../Provider/AuthProvider";
+import toast from "react-hot-toast";
+import { ROUTES } from "../../routes/routes";
 
 const SignUp = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createNewUser, updateUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+    const name = form.name.value;
 
-    createUser(email, password)
+    createNewUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        console.log("New User", user);
+        toast.success("User Registration Successful", {
+          position: "top-right",
+        });
+        updateUserProfile(name);
       })
       .catch((error) => console.error(error));
+  };
+
+  const updateUserProfile = (name) => {
+    const profile = { displayName: name };
+    updateUser(profile)
+      .then(() => {})
+      .catch((error) => {
+        console.error(error);
+      });
+    navigate(`${ROUTES.LOGIN}`);
   };
 
   return (
@@ -26,7 +45,7 @@ const SignUp = () => {
           <img className="w-3/4" src={image} alt="" />
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <h1 className="text-5xl text-center font-bold">Login</h1>
+          <h1 className="text-5xl text-center font-bold">Sign Up</h1>
           <form onSubmit={handleSignUp} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -71,7 +90,7 @@ const SignUp = () => {
             <p className="text-center">
               Have an account{" "}
               <Link className="font-bold" to="/login">
-                Login
+                Login Here
               </Link>
             </p>
           </form>

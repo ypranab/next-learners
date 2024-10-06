@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import image from "../../../assests/login.svg";
 import { AuthContext } from "../../Provider/AuthProvider";
+import toast from "react-hot-toast";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const { logIn, googleLogIn, githubLogIn } = useContext(AuthContext);
@@ -9,59 +11,47 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+
   const handleLogin = (event) => {
     event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
+    const form = new FormData(event.currentTarget);
+    const email = form.get("email");
+    const password = form.get("password");
 
     logIn(email, password)
       .then((result) => {
         const user = result.user;
-        const currentUser = {
-          email: user.email,
-        };
-        console.log(currentUser);
-        //navigate(from, { replace: true })
+        toast.success("User Login Successful", {
+          position: "top-right",
+        });
+        //console.log(user);
+        //navigate("/");
+        navigate(from ? from : "/");
       })
       .catch((error) => console.error(error));
   };
 
   const handleGoogleSign = () => {
-    googleLogIn()
+    googleLogIn(googleProvider)
       .then((result) => {
         const user = result.user;
-        const currentUser = {
-          email: user.email,
-        };
-
-        //navigate(from, { replace: true })
+        toast.success("User Login Successful", {
+          position: "top-right",
+        });
+        navigate(from ? from : "/");
+        console.log(user);
       })
       .catch((err) => console.error(err));
   };
 
   const handleGitHubSignIn = () => {
-    githubLogIn()
+    githubLogIn(githubProvider)
       .then((result) => {
         const user = result.user;
-        const currentUser = {
-          email: user.email,
-        };
-        //jwt token
-        fetch("https://service-review-server-side-delta.vercel.app/jwt", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(currentUser),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            // local storage is the easiest but not the best place to store jwt token
-            localStorage.setItem("review-token", data.token);
-            navigate(from, { replace: true });
-          });
-        //navigate(from, { replace: true });
+        console.log(user);
+        navigate(from, { replace: true });
         //console.log(user);
       })
       .catch((error) => {

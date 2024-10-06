@@ -11,7 +11,7 @@ const Courses = () => {
   useEffect(() => {
     getCourses();
   }, []);
-  console.log(courses);
+  //console.log(courses);
 
   return (
     <div className="my-12 gap-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">

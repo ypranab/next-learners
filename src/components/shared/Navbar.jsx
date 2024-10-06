@@ -1,7 +1,34 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../routes/routes";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import userPic from "../../../assests/user.png";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+  console.log(user);
+
+  const navLink = (
+    <>
+      <li>
+        <Link to={`${ROUTES.HOME}`}>Home</Link>
+      </li>
+      <li>
+        <Link to={`${ROUTES.COURSES}`}>Products</Link>
+      </li>
+    </>
+  );
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        navigate(`/login`);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <div className="navbar bg-zinc-200 mb-4">
       <div className="navbar-start">
@@ -26,18 +53,7 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            <li>
-              <Link to={`${ROUTES.HOME}`}>Home</Link>
-            </li>
-            <li>
-              <a>About</a>
-            </li>
-            <li>
-              <a>BLog</a>
-            </li>
-            <li>
-              <Link to={`${ROUTES.FAQ}`}>FAQ</Link>
-            </li>
+            {navLink}
           </ul>
         </div>
         <Link to={`${ROUTES.HOME}`} className="btn btn-ghost text-xl">
@@ -45,19 +61,30 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link to={`${ROUTES.HOME}`}>Home</Link>
-          </li>
-          <li>
-            <Link to={`${ROUTES.COURSES}`}>Products</Link>
-          </li>
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navLink}</ul>
       </div>
       <div className="navbar-end">
-        <Link to={`${ROUTES.LOGIN}`} className="btn">
-          Sign in
-        </Link>
+        {user && user.displayName}
+        {user &&
+          (user?.photoURL ? (
+            <div className="w-8">
+              <img className="rounded-full" alt="User" src={user?.photoURL} />
+            </div>
+          ) : (
+            <div className="w-9 rounded-full">
+              <img alt="User" src={userPic} />
+            </div>
+          ))}
+
+        {user ? (
+          <button onClick={handleLogout} className="btn ml-2">
+            Logout
+          </button>
+        ) : (
+          <Link to={`${ROUTES.LOGIN}`} className="btn">
+            Sign in
+          </Link>
+        )}
       </div>
     </div>
   );

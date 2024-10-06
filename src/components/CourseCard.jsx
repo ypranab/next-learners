@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
+import { ROUTES } from "../routes/routes";
 
 const CourseCard = ({ course }) => {
   const { _id, title, author, img_url, details } = course;
 
   return (
-    <Link to={`/api/products/${_id}`}>
+    <Link to={`${ROUTES.SINGLE_COURSE.DYNAMIC(_id)}`}>
       <div className="card bg-base-100 shadow-xl">
         <figure className="w-fit h-36">
           <img src={`${img_url}`} alt="" />

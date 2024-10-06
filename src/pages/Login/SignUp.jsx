@@ -35,7 +35,7 @@ const SignUp = () => {
       .catch((error) => {
         console.error(error);
       });
-    navigate(`${ROUTES.LOGIN}`);
+    navigate(`${ROUTES.HOME}`);
   };
 
   return (

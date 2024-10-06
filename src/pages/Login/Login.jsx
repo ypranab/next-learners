@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import image from "../../../assests/login.svg";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -7,8 +7,10 @@ import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const { logIn, googleLogIn, githubLogIn } = useContext(AuthContext);
+  const [error, setError] = useState();
   const navigate = useNavigate();
   const location = useLocation();
+
   const from = location.state?.from?.pathname || "/";
 
   const googleProvider = new GoogleAuthProvider();
@@ -23,14 +25,19 @@ const Login = () => {
     logIn(email, password)
       .then((result) => {
         const user = result.user;
+        setError("");
         toast.success("User Login Successful", {
           position: "top-right",
         });
-        //console.log(user);
+        console.log(user);
         //navigate("/");
         navigate(from ? from : "/");
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        const errorCode = error.code;
+        setError(error.message);
+        console.error(errorCode);
+      });
   };
 
   const handleGoogleSign = () => {
@@ -98,6 +105,7 @@ const Login = () => {
             <div className="form-control mt-6">
               <input type="submit" className="btn btn-primary" value="Login" />
             </div>
+            {error}
             <p className="text-center">
               <button onClick={handleGoogleSign} className="btn btn-error">
                 Google Sign in{" "}

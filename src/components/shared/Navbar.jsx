@@ -5,9 +5,12 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import userPic from "../../../assests/user.png";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, loading } = useContext(AuthContext);
   const navigate = useNavigate();
-  console.log(user);
+
+  if (loading) {
+    return <div className="text-2xl text-red-600">Loading....</div>;
+  }
 
   const navLink = (
     <>
@@ -19,6 +22,7 @@ const Navbar = () => {
       </li>
     </>
   );
+
   const handleLogout = () => {
     logOut()
       .then(() => {
@@ -71,8 +75,8 @@ const Navbar = () => {
               <img className="rounded-full" alt="User" src={user?.photoURL} />
             </div>
           ) : (
-            <div className="w-9 rounded-full">
-              <img alt="User" src={userPic} />
+            <div className="w-8">
+              <img className="rounded-full" alt="User" src={userPic} />
             </div>
           ))}
 

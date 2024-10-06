@@ -7,6 +7,7 @@ import SingleCourse from "../pages/SIngleCourse";
 import Courses from "../components/Courses";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/Login/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -19,13 +20,21 @@ const router = createBrowserRouter([
       },
       {
         path: `${ROUTES.COURSES}`,
-        element: <Courses></Courses>,
+        element: (
+          <PrivateRoute>
+            <Courses></Courses>
+          </PrivateRoute>
+        ),
       },
       {
         path: `${ROUTES.SINGLE_COURSE.STATIC}`,
         loader: ({ params }) =>
           fetch(`${ROUTES.BASE_URL}/api/products/${params.id}`),
-        element: <SingleCourse></SingleCourse>,
+        element: (
+          <PrivateRoute>
+            <SingleCourse></SingleCourse>
+          </PrivateRoute>
+        ),
       },
       {
         path: `${ROUTES.LOGIN}`,

@@ -22,7 +22,6 @@ const PrivateRoute = ({ children }) => {
       <Navigate state={{ from: location }} to={`${ROUTES.LOGIN}`}></Navigate>
     );
   }
-  return <div></div>;
 };
 
 export default PrivateRoute;

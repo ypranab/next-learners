@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       {
         path: `${ROUTES.SINGLE_COURSE.STATIC}`,
         loader: ({ params }) =>
-          fetch(`${ROUTES.BASE_URL}/api/products/${params.id}`),
+          fetch(`${ROUTES.BASE_URL}${ROUTES.COURSES}${params.id}`),
         element: (
           <PrivateRoute>
             <SingleCourse></SingleCourse>

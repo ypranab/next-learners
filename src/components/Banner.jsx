@@ -1,15 +1,17 @@
 const Banner = () => {
   return (
     <div className="hero bg-base-200">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <img
-          src="https://img-b.udemycdn.com/course/750x422/6035102_7d1a.jpg"
-          className="max-w-xl w-3/4 rounded-lg shadow-2xl"
-        />
-        <div className="flex-col">
-          <h1 className="text-5xl font-bold">Welcome</h1>
-          <p className="py-6">Learn New Skills at Next Learners</p>
-          <button className="btn btn-primary">Explore course</button>
+      <div className="hero-content text-center">
+        <div className="max-w-3xl">
+          <h1 className="text-4xl font-bold">
+            Build your subject-matter expertise
+          </h1>
+          <p className="py-6">
+            Explore Web Development courses that cover skills in HTML, CSS,
+            JavaScript, and responsive design. Build expertise for careers in
+            front-end development, full-stack development, and web design.
+          </p>
+          <button className="btn btn-primary">Get Started</button>
         </div>
       </div>
     </div>

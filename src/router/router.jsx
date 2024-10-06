@@ -2,10 +2,11 @@ import { createBrowserRouter } from "react-router-dom";
 import { ROUTES } from "../routes/routes";
 import Common from "../layouts/Common";
 import HomePage from "../pages/HomePage";
-import FAQ from "../pages/FAQ";
 import Error from "../pages/Error";
 import SingleCourse from "../pages/SIngleCourse";
 import Courses from "../components/Courses";
+import Login from "../pages/Login/Login";
+import SignUp from "../pages/Login/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -27,8 +28,12 @@ const router = createBrowserRouter([
         element: <SingleCourse></SingleCourse>,
       },
       {
-        path: `${ROUTES.FAQ}`,
-        element: <FAQ></FAQ>,
+        path: `${ROUTES.LOGIN}`,
+        element: <Login></Login>,
+      },
+      {
+        path: `${ROUTES.REGISTER}`,
+        element: <SignUp></SignUp>,
       },
     ],
   },

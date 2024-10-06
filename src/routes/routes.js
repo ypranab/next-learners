@@ -6,5 +6,7 @@ export const ROUTES = {
     STATIC: "/api/products/:id",
     DYNAMIC: (course_id) => `/api/products/${course_id}`,
   },
+  LOGIN: "/login",
+  REGISTER: "/signup",
   FAQ: "/faq",
 };

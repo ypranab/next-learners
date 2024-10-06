@@ -55,7 +55,9 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Sign In</a>
+        <Link to={`${ROUTES.LOGIN}`} className="btn">
+          Sign in
+        </Link>
       </div>
     </div>
   );

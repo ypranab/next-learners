@@ -29,7 +29,7 @@ const SingleCourse = () => {
 
   return (
     <div className="card lg:card-side bg-teal-50 shadow-xl w-3/4 mx-auto mb-16 py-4">
-      <figure className="w-svw">
+      <figure className="w-fit lg:w-svw">
         <img src={`${img_url}`} alt="Album" />
       </figure>
       <div className="card-body font-semibold">

@@ -13,6 +13,7 @@ const HomePage = () => {
       </h1>
       <Guidelines></Guidelines>
       <ImageSection></ImageSection>
+      <hr />
       <Contact></Contact>
       <AboutUs></AboutUs>
     </div>

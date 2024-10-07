@@ -1,20 +1,16 @@
 const Footer = () => {
   return (
     <>
-      <footer className="footer bg-base-200 text-base-content p-10">
+      <footer className="footer bg-base-200 text-base-content p-8">
         <nav>
-          <h6 className="footer-title">Services</h6>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Design</a>
-          <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>
+          <h6 className="footer-title">Address</h6>
+          <span>House #23, Block-E, Farmgate, Dhaka-1000</span>
         </nav>
         <nav>
-          <h6 className="footer-title">Company</h6>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
+          <h6 className="footer-title">About Us</h6>
+          <a className="link link-hover">Phone: +00022222</a>
+          <a className="link link-hover">Email: next-learners@mail.com</a>
+          <a className="link link-hover">LinkedIn: https://www.linkedin.com/</a>
         </nav>
         <nav>
           <h6 className="footer-title">Contact us</h6>

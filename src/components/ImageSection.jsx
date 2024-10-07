@@ -1,6 +1,6 @@
 const ImageSection = () => {
   return (
-    <div className="hero bg-teal-50 w-4/5 mt-4 mx-auto">
+    <div className="hero w-fit mt-4 mx-auto">
       <div className="hero-content grid grid-cols-4 grid-rows-2 gap-2">
         <div className="row-span-2 col-span-2">
           <img

@@ -1,9 +1,11 @@
 const Contact = () => {
   return (
-    <div className="w-2/4 mx-auto">
-      <h2 className="text-5xl text-center">Contact us</h2>
+    <div className="w-2/4 mx-auto my-8">
+      <h2 className="text-5xl text-orange-500 font-bold text-center">
+        Contact us
+      </h2>
       <form className="mb-5">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 my-5">
           <input
             name="firstName"
             type="text"
@@ -29,9 +31,8 @@ const Contact = () => {
             className="textarea textarea-bordered"
             placeholder="Your Review"
           ></textarea>
+          <input className="btn btn-accent" value="Submit" />
         </div>
-        <br />
-        <input className="btn btn-accent" value="Submit" />
       </form>
     </div>
   );

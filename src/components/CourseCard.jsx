@@ -7,7 +7,7 @@ const CourseCard = ({ course }) => {
 
   return (
     <Link to={`${ROUTES.SINGLE_COURSE.DYNAMIC(_id)}`}>
-      <div className="card bg-base-100 shadow-xl">
+      <div className="card bg-base-100 shadow-xl px-2">
         <figure className="w-fit h-36">
           <img src={`${img_url}`} alt="" />
         </figure>

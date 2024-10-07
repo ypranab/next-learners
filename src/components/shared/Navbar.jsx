@@ -6,12 +6,8 @@ import userPic from "../../assests/user.png";
 import logo from "../../assests/logo.ico";
 
 const Navbar = () => {
-  const { user, logOut, loading } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
-
-  if (loading) {
-    return <div className="text-2xl text-red-600">Loading....</div>;
-  }
 
   const navLink = (
     <>
@@ -73,7 +69,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {user && user.displayName}
-        {user &&
+        {user?.email &&
           (user?.photoURL ? (
             <div className="w-8">
               <img className="rounded-full" alt="User" src={user?.photoURL} />
@@ -84,7 +80,7 @@ const Navbar = () => {
             </div>
           ))}
 
-        {user ? (
+        {user?.email ? (
           <button onClick={handleLogout} className="btn ml-2">
             Logout
           </button>
